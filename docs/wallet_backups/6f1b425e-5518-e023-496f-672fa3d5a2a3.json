@@ -1,0 +1,22 @@
+{
+    "address": "00923682a1c598cf1add82bfd8b2c93a7a9029c0",
+    "crypto": {
+        "cipher": "aes-128-ctr",
+        "cipherparams": {
+            "iv": "fd64ed1d66b88209e8aa558b340a2192"
+        },
+        "ciphertext": "e38515b4165c0f851832010aeab9b01608b6fb65509a4adb15a1491519e14386",
+        "kdf": "pbkdf2",
+        "kdfparams": {
+            "c": 10240,
+            "dklen": 32,
+            "prf": "hmac-sha256",
+            "salt": "128de652ef122a2a0a7e36f36ea0728ff4078f3db1a5a92f0c453f0d1af4db65"
+        },
+        "mac": "1ee4bb57c1c50fee2a6242e12a728fc881ee2df82aa7fff2b13997e5226c6f31"
+    },
+    "id": "6f1b425e-5518-e023-496f-672fa3d5a2a3",
+    "meta": "{\"description\":\"\",\"passwordHint\":\"redhio\",\"timestamp\":1513121071383}",
+    "name": "Redhio Capstone Account",
+    "version": 3
+}

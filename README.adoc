@@ -1,0 +1,19 @@
+# killer
+
+image:images/title.png[title="killer",width="200", height="200"]
+
+== Install
+The compiled files for the killer dapp.
+
+To install run:
+
+```
+./deploy.sh
+```
+
+Restart Parity and you'll see killer in the list of Dapps!
+
+
+== Requirements
+
+This Dapp requires Parity 1.3 with signer enabled.

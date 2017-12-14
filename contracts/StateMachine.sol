@@ -1,6 +1,6 @@
 pragma solidity ^0.4.11;
 
-contract StateMachine {
+contract ServiceStateMachine {
     enum Stages {
         AcceptingBlindedBids,
         RevealBids,

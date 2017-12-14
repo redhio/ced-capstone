@@ -1,17 +1,17 @@
-# killer
+# ced-capstone
 
-image:images/title.png[title="killer",width="200", height="200"]
+image:images/title.png[title="ced-capstone",width="200", height="200"]
 
 == Install
-The compiled files for the killer dapp.
+The compiled files for the ced-capstone dapp.
 
 To install run:
 
 ```
-./deploy.sh
+./deploy.bat
 ```
 
-Restart Parity and you'll see killer in the list of Dapps!
+Restart Parity and you'll see ced-capstone in the list of Dapps!
 
 
 == Requirements

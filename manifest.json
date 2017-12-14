@@ -1,8 +1,8 @@
 {
 	"id": "1",
-	"name": "killer",
-	"description": "first killer dapp",
+	"name": "ced-capstone",
+	"description": "ced-capstone dapp",
 	"version": "0.1.0",
-	"author": "killer",
+	"author": "redhio",
 	"iconUrl": "images/title.png"
 }

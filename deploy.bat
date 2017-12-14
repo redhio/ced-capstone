@@ -1,3 +1,3 @@
 echo "Deploying your DAPP..."
-XCOPY /YEI . "ced-capstone.app"
+XCOPY /YEI . "killer1.app"
 echo "Done! Don't forget to restart Parity"

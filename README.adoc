@@ -33,4 +33,9 @@ Restart Parity and you'll see ced-capstone in the list of Dapps!
 
 This Dapp requires Parity with signer enabled or Metamask.
 
-== Requirements
+== Using the contracts
+1. Send 1 eth to 0x009
+2. Provide input data 2,4,5
+3. Confirm transaction
+4. Receive the answer, which is 2
+

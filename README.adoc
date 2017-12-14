@@ -17,6 +17,9 @@ image:images/title.png[title="ced-capstone",width="200", height="200"]
 node install remixd
 remixd -S .\contracts
 
+git commit -a
+git push origin master
+
 == Install
 The compiled files for the ced-capstone dapp.
 

@@ -1,6 +1,21 @@
 # ced-capstone
+Dec-2017
+This is our Certified Ethereum Developer CED Capstone Project for the Blockchainhub.
+This project is to show how an external remote service can be governed by blockchain smart contracts.  
+A series of service and state contracts govern the interactions, while a remote service bridge initiates the remote service and returns the results to the smart contract.
+
+The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on 3 https://bigml.com/api
+inputs:
+petal length
+petal width
+sepal length
+outputs:
+iris prediction
 
 image:images/title.png[title="ced-capstone",width="200", height="200"]
+== Setup
+node install remixd
+remixd -S .\contracts
 
 == Install
 The compiled files for the ced-capstone dapp.
@@ -16,4 +31,6 @@ Restart Parity and you'll see ced-capstone in the list of Dapps!
 
 == Requirements
 
-This Dapp requires Parity 1.3 with signer enabled.
+This Dapp requires Parity with signer enabled or Metamask.
+
+== Requirements

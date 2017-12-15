@@ -7,41 +7,34 @@ contract Purchase {
     address public seller;
     address public buyer;
     address public service;
+    int public serviceAccuracy;
     enum State { Created, Locked, Inactive }
     State public state;
 
-    // Ensure that `msg.value` is an even number.
-    // Division will truncate if it is an odd number.
-    // Check via multiplication that it wasn't an odd number.
+    // Ensure that `msg.value` is equal to our selling price
     function Purchase() public payable {
         seller = msg.sender;
-        value = msg.value / 2;
-        require((2 * value) == msg.value);
+        require(  2  == msg.value);
     }
-
     modifier condition(bool _condition) {
         require(_condition);
         _;
     }
-
     modifier onlyBuyer() {
         require(msg.sender == buyer);
         _;
     }
-
     modifier onlySeller() {
         require(msg.sender == seller);
         _;
     }
-
     modifier inState(State _state) {
         require(state == _state);
         _;
     }
-
     event Aborted();
     event PurchaseConfirmed();
-    event ItemReceived();
+    event ServiceReceived();
 
     /// Abort the purchase and reclaim the ether.
     /// Can only be called by the seller before
@@ -75,7 +68,8 @@ contract Purchase {
         onlyBuyer
         inState(State.Locked)
     {
-        ItemReceived();
+        if (serviceAccuracy == 1){
+        ServiceReceived();
         // It is important to change the state first because
         // otherwise, the contracts called using `send` below
         // can call in again here.
@@ -86,5 +80,7 @@ contract Purchase {
 
         buyer.transfer(value);
         seller.transfer(this.balance);
+        }
+        else{revert();}
     }
 }

@@ -1,5 +1,7 @@
 pragma solidity ^0.4.8;
 
+
+
 contract ServiceContract {
     //  This is a generic contract for a service
     address public owner;
@@ -9,7 +11,7 @@ contract ServiceContract {
     
     address public buyer;
     address public seller;
-    address   public arbiter;
+    address public arbiter;
     int public model;
   
     function ServiceContract(address _seller, address _arbiter, int _model) public {

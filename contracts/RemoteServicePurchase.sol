@@ -1,16 +1,19 @@
 pragma solidity ^0.4.11;
+/* ced-capstone - We used a basic  purchase contract to govern the Transaction
 
+*/
 contract Purchase {
     uint public value;
     address public seller;
     address public buyer;
+    address public service;
     enum State { Created, Locked, Inactive }
     State public state;
 
     // Ensure that `msg.value` is an even number.
     // Division will truncate if it is an odd number.
     // Check via multiplication that it wasn't an odd number.
-    function Purchase() payable {
+    function Purchase() public payable {
         seller = msg.sender;
         value = msg.value / 2;
         require((2 * value) == msg.value);
@@ -43,7 +46,7 @@ contract Purchase {
     /// Abort the purchase and reclaim the ether.
     /// Can only be called by the seller before
     /// the contract is locked.
-    function abort()
+    function abort() public
         onlySeller
         inState(State.Created)
     {
@@ -56,7 +59,7 @@ contract Purchase {
     /// Transaction has to include `2 * value` ether.
     /// The ether will be locked until confirmReceived
     /// is called.
-    function confirmPurchase()
+    function confirmPurchase() public
         inState(State.Created)
         condition(msg.value == (2 * value))
         payable
@@ -68,7 +71,7 @@ contract Purchase {
 
     /// Confirm that you (the buyer) received the item.
     /// This will release the locked ether.
-    function confirmReceived()
+    function confirmReceived() public
         onlyBuyer
         inState(State.Locked)
     {

@@ -1,3 +1,5 @@
+// set required variables
+// setup api connection authority, ml framework
 
 var request = require('request');
 var reqprom = require('request-promise');

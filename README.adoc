@@ -31,7 +31,6 @@ To install run:
 
 Restart Parity and you'll see ced-capstone in the list of Dapps!
 
-
 == Requirements
 
 This Dapp requires Parity with signer enabled or Metamask.

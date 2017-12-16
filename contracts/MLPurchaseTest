@@ -1,0 +1,87 @@
+pragma solidity ^0.4.11;
+
+contract mortal {
+    /* Define variable owner of the type address */
+    address owner;
+
+    /* This function is executed at initialization and sets the owner of the contract */
+    function mortal() { owner = msg.sender; }
+
+    /* Function to recover the funds on the contract */
+    function contractAbort() { if (msg.sender == owner) selfdestruct(owner); }
+}
+
+
+contract MLPurchase is mortal{
+    /*Define variables */ 
+    
+    //1. receive input from user for modelID, custID, contractSLA & contractRate
+    // set buyer address (person executing) & buer to send funds
+    // set seller address (this could be hardcoded)
+    
+    uint public modelID;  // stores the MLmodel to run
+    uint public custID;  // stores the custID
+    uint public contractSLA;  // stores the min. % accuracy of model as decimal
+    uint public contractRate;  // stores the contract rate ($charged to the cust) in ether
+    
+    uint public value;
+    address public seller;
+    address public buyer;
+    
+    
+    
+    /* This runs when the contract is executed */
+    function MLPurchase(uint _modelID, uint _custID, uint _contractSLA, uint _contractRate) public{
+        modelID = _modelID;
+        custID = _custID;
+        contractSLA = _contractSLA;
+        contractRate = _contractRate;
+        
+        require(2 == _contractRate);
+        buyer = msg.sender;
+        seller = 0x6DecBBC87dd79F57010db7110df25B17bB5F4723;
+    }
+    
+    function reportData() public returns(uint){
+        return contractRate;
+        return contractSLA;
+        return custID;
+        return modelID;
+        
+    }
+
+}
+    
+
+    //---> ML land --> input data and criteria sent to BigML
+    // ---> ML land ---> model runs, returns result & accuracy
+    
+    
+    //2. receive BigML output & accuracy
+    // test accuracy & buyer address to verify
+    // release funds
+
+contract MLPurchaseEnd is MLPurchase{
+
+    uint public verifyID;
+    uint public MLAcc;
+    address public buyer;
+        
+    function MLPurchaseEnd(uint _contractSLA, uint _contractRate, uint _modelID, uint _custID, uint _verifyID, uint _MLAcc) public payable{
+        
+        verifyID = _verifyID;
+        require(verifyID == _custID);
+        
+        MLAcc = _MLAcc;
+        buyer = MLPurchase.buyer;
+        
+        {
+        if(_MLAcc >= MLPurchase.contractSLA){
+            buyer.transfer(msg.value);
+            }
+            else{revert();
+            }
+        }
+      
+    }
+}

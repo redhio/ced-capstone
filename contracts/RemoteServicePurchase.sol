@@ -14,9 +14,10 @@ contract Purchase {
     enum State { Created, Locked, Inactive }
     State public state;
     /* These should be in an abstracted class specific to the machine learning model */
-    uint petal_length;
-    uint petal_width;
-    uint sepal_length;
+    uint public petal_length;
+    uint public petal_width;
+    uint public sepal_length;
+    string public prediction;
     
 
     /* Set the purchase price requirement of the remote machine learning service. */

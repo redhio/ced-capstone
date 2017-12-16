@@ -13,7 +13,7 @@ contract MLPurchase{
     
     /*variables will be captured using web3 app, sent by the customer end-user*/
     
-    /*private variables */ 
+    /*private variables, need to add data variables to capture data for BigML */ 
     
     uint private modelID;  // customer indicates which ML model to run using an ID
     uint private custID;  // web3 app would automatically send customer account number based on user login, here we just enter it via web3 app
@@ -54,7 +54,7 @@ contract MLPurchase{
     
 contract MLPurchaseEnd is MLPurchase{
 
-    /*public variables*/
+    /*public variables, need to add variables to receive result from BigML*/
     uint public verifyID; //verification ID confirms that results from model "match" the request sent, for purpose of this example we are setting it to custID.  The 2 must match for contract to execute
     uint public MLAcc;  //% accuracy of ML model reported from BigML
     

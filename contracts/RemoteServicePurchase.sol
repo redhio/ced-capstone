@@ -73,7 +73,7 @@ contract Purchase {
         state = State.Locked;
     }
 
-    /* Confirm that you (the buyer) received the prediction and release the locked Ether. */
+    /* Confirm that the buyer has received the prediction, sla and can unlocked the Ether. */
     function confirmReceived() public
         onlyBuyer
         inState(State.Locked)

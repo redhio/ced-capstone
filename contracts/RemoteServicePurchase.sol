@@ -19,23 +19,27 @@ contract Purchase {
         seller = msg.sender;
         require(  2  == msg.value);
     }
-    /* standard modifiers required for this contract */
-    modifier isequal(bool _condition) {
+    /* boolean logical function */
+    modifier isEqual(bool _condition) {
         require(_condition);
         _;
     }
+    /* Check to see the message was sent by the Buyer */
     modifier onlyBuyer() {
         require(msg.sender == buyer);
         _;
     }
+    /* Check to see the message was sent by the Seller */
     modifier onlySeller() {
         require(msg.sender == seller);
         _;
     }
+    /* Check to see the message was sent by the RemoteService */
     modifier onlyService() {
         require(msg.sender == service);
         _;
     }
+    /* Restrict the function to only a certain State.  Useful to step through a sequence of events*/
     modifier inState(State _state) {
         require(state == _state);
         _;
@@ -44,9 +48,8 @@ contract Purchase {
     event PurchaseConfirmed();
     event ServiceReceived();
 
-    /// Abort the purchase and reclaim the ether.
-    /// Can only be called by the seller before
-    /// the contract is locked.
+    /* Abort the purchase and reclaim the ether by the buyer or seller before
+    *  the contract is locked for servicing. */
     function abort() public
         onlySeller
         inState(State.Created)
@@ -62,7 +65,7 @@ contract Purchase {
     /// is called.
     function confirmPurchase() public
         inState(State.Created)
-        condition(msg.value == (2 * value))
+        isEqual(msg.value == (2 * value))
         payable
     {
         PurchaseConfirmed();
@@ -70,21 +73,17 @@ contract Purchase {
         state = State.Locked;
     }
 
-    /// Confirm that you (the buyer) received the item.
-    /// This will release the locked ether.
+    /* Confirm that you (the buyer) received the prediction and release the locked Ether. */
     function confirmReceived() public
         onlyBuyer
         inState(State.Locked)
     {
         if (serviceAccuracy == 1){
         ServiceReceived();
-        // It is important to change the state first because
-        // otherwise, the contracts called using `send` below
-        // can call in again here.
+        /* Change the state to inactive to complete the final state. */
         state = State.Inactive;
 
-        // NOTE: This actually allows both the buyer and the seller to
-        // block the refund - the withdraw pattern should be used.
+        /* NOTE: This allows both the buyer and the seller to block the refund - the withdraw pattern should be used. */
 
         buyer.transfer(value);
         seller.transfer(this.balance);

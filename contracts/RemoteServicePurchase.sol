@@ -1,6 +1,8 @@
 pragma solidity ^0.4.11;
-/* ced-capstone - We used a basic  purchase contract to govern the Transaction
-
+/* ced-capstone - This contract governs the transaction for a remote service.  
+* 
+*
+*
 */
 contract Purchase {
     uint public value;
@@ -8,6 +10,7 @@ contract Purchase {
     address public buyer;
     address public service;
     int public serviceAccuracy;
+    
     enum State { Created, Locked, Inactive }
     State public state;
 
@@ -16,7 +19,8 @@ contract Purchase {
         seller = msg.sender;
         require(  2  == msg.value);
     }
-    modifier condition(bool _condition) {
+    /* standard modifiers required for this contract */
+    modifier isequal(bool _condition) {
         require(_condition);
         _;
     }
@@ -26,6 +30,10 @@ contract Purchase {
     }
     modifier onlySeller() {
         require(msg.sender == seller);
+        _;
+    }
+    modifier onlyService() {
+        require(msg.sender == service);
         _;
     }
     modifier inState(State _state) {
@@ -82,5 +90,10 @@ contract Purchase {
         seller.transfer(this.balance);
         }
         else{revert();}
+    }
+    /* */
+    function ripContract() public onlySeller {
+         selfdestruct(1);
+    
     }
 }

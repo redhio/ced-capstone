@@ -42,7 +42,7 @@ contract MLPurchase is mortal{
         seller = 0x6DecBBC87dd79F57010db7110df25B17bB5F4723;
     }
     
-    function reportData() public returns(uint){
+    function reportData() constant public returns(uint){
         return contractRate;
         return contractSLA;
         return custID;
@@ -67,16 +67,16 @@ contract MLPurchaseEnd is MLPurchase{
     uint public MLAcc;
     address public buyer;
         
-    function MLPurchaseEnd(uint _contractSLA, uint _contractRate, uint _modelID, uint _custID, uint _verifyID, uint _MLAcc) public payable{
+    function MLPurchaseEnd(uint _contractSLA, uint _contractRate, uint _modelID, uint _custID, uint _verifyID, uint _MLAcc) MLPurchase(_contractSLA, _contractRate, _modelID, _custID) public payable{
         
         verifyID = _verifyID;
         require(verifyID == _custID);
         
         MLAcc = _MLAcc;
-        buyer = MLPurchase.buyer;
+        buyer = MLPurchase(buyer);
         
         {
-        if(_MLAcc >= MLPurchase.contractSLA){
+        if(_MLAcc >= _contractSLA){
             buyer.transfer(msg.value);
             }
             else{revert();

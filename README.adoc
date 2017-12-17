@@ -12,7 +12,7 @@ sepal length
 outputs:
 iris prediction
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg[title="ced-capstone",width="200", height="200"]
-
+https://en.wikipedia.org/wiki/Iris_setosa
 
 
 == Setup

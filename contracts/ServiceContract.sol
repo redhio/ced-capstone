@@ -1,6 +1,6 @@
 pragma solidity ^0.4.8;
 
-
+/* Sample only - Not for Submission */
 
 contract ServiceContract {
     //  This is a generic contract for a service

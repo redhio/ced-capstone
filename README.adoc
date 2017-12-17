@@ -11,8 +11,9 @@ petal width
 sepal length
 outputs:
 iris prediction
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg/360px-Kosaciec_szczecinkowaty_Iris_setosa.jpg[title="ced-capstone",width="200", height="200"]
 
-image:images/title.png[title="ced-capstone",width="200", height="200"]
+
 == Setup
 node install remixd
 remixd -S .\contracts

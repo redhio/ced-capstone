@@ -4,15 +4,19 @@ This is our Certified Ethereum Developer CED Capstone Project for the Blockchain
 This project is to show how an external remote service can be governed by blockchain smart contracts.  
 A series of service and state contracts govern the interactions, while a remote service bridge initiates the remote service and returns the results to the smart contract.
 
-The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on 3 https://bigml.com/api
-inputs:
-petal length
-petal width
-sepal length
-outputs:
-iris prediction
+== Iris Prediction
+The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on three input parameters.  The details can be found https://bigml.com/api
 
-image:images/title.png[title="ced-capstone",width="200", height="200"]
+inputs: petal length, petal width, sepal length
+
+outputs: a prediction
+
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg[title="ced-capstone-setosa",width="200", height="200"]
+https://en.wikipedia.org/wiki/Iris_setosa
+
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Blue_Flag%2C_Ottawa.jpg/330px-Blue_Flag%2C_Ottawa.jpg[title="ced-capstone-versicolor",width="200", height="200"]
+https://en.wikipedia.org/wiki/Iris_versicolor
+
 == Setup
 node install remixd
 remixd -S .\contracts

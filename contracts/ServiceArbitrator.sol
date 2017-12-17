@@ -1,4 +1,5 @@
 pragma solidity ^0.4.11;
+/*Sample only Not for Submission*/
 contract Arbitrator {
 
   address public buyer;

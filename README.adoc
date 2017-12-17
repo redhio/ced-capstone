@@ -10,12 +10,12 @@ petal length
 petal width
 sepal length
 outputs:
-iris prediction
+Iris Prediction
+
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg[title="ced-capstone-setosa",width="200", height="200"]
 https://en.wikipedia.org/wiki/Iris_setosa
 
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Blue_Flag%2C_Ottawa.jpg/330px-Blue_Flag%2C_Ottawa.jpg[title="ced-capstone-versicolor",width="200", height="200"]
-
 https://en.wikipedia.org/wiki/Iris_versicolor
 
 == Setup

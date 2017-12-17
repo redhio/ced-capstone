@@ -6,12 +6,14 @@ A series of service and state contracts govern the interactions, while a remote 
 
 == Iris Prediction
 The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on three input parameters.  The details can be found https://bigml.com/api
+
 inputs:
 petal length
 petal width
 sepal length
 
-outputs:
+outputs: a prediction
+
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg[title="ced-capstone-setosa",width="200", height="200"]
 https://en.wikipedia.org/wiki/Iris_setosa
 

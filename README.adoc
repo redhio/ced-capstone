@@ -11,7 +11,8 @@ petal width
 sepal length
 outputs:
 iris prediction
-image:https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg/360px-image:https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Kosaciec_szczecinkowaty_Iris_versicolor.jpg/360px-Kosaciec_szczecinkowaty_Iris_setosa.jpg[title="ced-capstone",width="200", height="200"]
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg[title="ced-capstone",width="200", height="200"]
+
 
 
 == Setup

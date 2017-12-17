@@ -1,8 +1,8 @@
 pragma solidity ^0.4.11;
 /* ced-capstone - This contract governs the transaction for a remote machine learning service.  
 * The three entities which interact with the contract are the buyer, seller, and the external remote services.
-*  For a Utility model, we would like this to be like a Pre-Authorized-Debit (PAD)
-* Sunday V1.2.50
+*  For a Utility model, we would like this to be like a Pre-Authorized-Debit (PAD), but for now you have to send eth.
+* Sunday V1.6.13final
 */
 contract Purchase {
     uint public value;
@@ -38,6 +38,15 @@ contract Purchase {
         contractRate = _contractRate ;
         
     }
+    /* Change the purchase price and model requirement of the remote machine learning service. Purchase price is hardcoded at 2ether*/
+    function AlterAgreement(uint _modelID, uint _contractRate) public payable {
+        require( contractRate  == msg.value); /* Check the funds before we burn any additional gas */
+        seller = msg.sender;
+        value = msg.value;
+        modelID = _modelID;
+        contractRate = _contractRate ;
+    }
+    
     /* Set the purchase price requirement of the remote machine learning service. */
     function Predict( uint _petalLength, uint _petalWidth, uint _sepalLength) public payable onlyBuyer {
         require( contractRate  == msg.value); /* Check the funds before we burn any additional gas */

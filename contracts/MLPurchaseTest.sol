@@ -1,13 +1,14 @@
 pragma solidity ^0.4.18;
 
-/*MLPurchase is parent contract used to read variables from the user (via web3 app) and store in contract.
-Information also stored is the buyer and seller address.  Seller address is known because it belongs to the machine learning (ML) provider.
-*** do not send ether/wei with this contract, it is only meant to store/read data.
+/*MLPurchase is a contract used to receive a request from a customer to run data against an ML (machine learning) model.
+It receives the modelID, customerID, contractSLA, contractRate and seller address from a web3 interface to initiate the contract.
 
-MLPurchaseEnd completes the purchase by receiving value sent with the contract, taking the same variables used by MLPurchase and also receiving new data from the ML model.
-It tests the SLA and Verify values to confirm the response is a valid response.  It also checks that the value sent in this contract matches the contract rate.
-If all cases test true then it releases the funds.  */
+Upon deployment, the reportData function would provide details to a web3 interface which would send the request to an ML model (in this example we are using BigML).
+The ML model would process the request and respond back to the MLPurchaseEnd function with an accuracy value, verification ID and contract value.  The reported accuracy is tested against the contractSLA and 
+the verification ID is tested against the customer ID to ensure this result is matched to the correct contact (using custID in this example for simplicity, the verifyID
+would be more complicated in practice.)
 
+If the verify ID and customer ID match, the MLPurchaseEnd function releases the funds.  If not, the contract reverts. */
 
 contract MLPurchase{
     
@@ -16,23 +17,24 @@ contract MLPurchase{
     /*private variables, need to add data variables to capture data for BigML */ 
     
     uint private modelID;  // customer indicates which ML model to run using an ID
-    uint private custID;  // web3 app would automatically send customer account number based on user login, here we just enter it via web3 app
-    uint private contractSLA;  // stores the min % accuracy the model must produce for contract to be valid, would be sent based on customer account, here we just enter it via web3 app
-    uint private contractRate;  // stores the contract rate ($charged to the cust) in wei, would be sent based on customer account, here we just enter it via web3 app
-    
+    uint private custID;  // web3 app would automatically send customer account number based on user login, here we just enter it via remix
+    uint private contractSLA;  // stores the min % accuracy the model must produce for contract to be valid, would be sent based on customer account, here we just enter it via remix
+    uint private contractRate;  // stores the contract rate ($charged to the cust) in wei, would be sent based on customer account, here we just enter it via remix
+    address private buyer;  //address of the customer buying the service
+
     /*public variables */
-    address public seller;
-    address public buyer;
+    address public seller;  //address of the company selling the service
     
     /* Receives inputs from web3 apps and stores the variables */
-    function MLPurchase(uint _contractRate, uint _contractSLA, uint _custID, uint _modelID) public{
+    function MLPurchase(uint _contractRate, uint _contractSLA, uint _custID, uint _modelID, address _seller) public {
         modelID = _modelID;
         custID = _custID;
         contractSLA = _contractSLA;
         contractRate = _contractRate;
+        seller = _seller;
 
         buyer = msg.sender;
-        seller = 0x6DecBBC87dd79F57010db7110df25B17bB5F4723;
+        
     }
     
     /* Ensures that only the customer can execute this contract*/
@@ -45,21 +47,18 @@ contract MLPurchase{
     function reportData() public constant returns(uint ContractRate, uint ContractSLA, uint CustID, uint ModelID, address Buyer){
         return (contractRate, contractSLA, custID, modelID, buyer);
     }
-}
-    
 
+    
     //---> BigML land --> input data and criteria sent to BigML via javascript run in web3
     // ---> BigML land ---> model runs, returns result & accuracy from BigML via javascript run in web3
     
     
-contract MLPurchaseEnd is MLPurchase{
-
     /*public variables, need to add variables to receive result from BigML*/
     uint public verifyID; //verification ID confirms that results from model "match" the request sent, for purpose of this example we are setting it to custID.  The 2 must match for contract to execute
     uint public MLAcc;  //% accuracy of ML model reported from BigML
     
-    /*captures variables from parent contract and from BigML output via web3*/    
-    function MLPurchaseEnd(uint _verifyID, uint _MLAcc, uint contractRate, uint contractSLA, uint custID, uint modelID) MLPurchase(contractRate, contractSLA, custID, modelID) public payable{
+    /*captures verifyID and MLAcc from BigML output via web3, also sends the wei amount - these values need to be entered via remix*/    
+    function MLPurchaseEnd(uint _verifyID, uint _MLAcc) public payable{
         
         /* sets variables and tests if the verifyID matches and if the contractRate is equal to the value sent in the contract and accuract from model matches the SLA*/
         verifyID = _verifyID;

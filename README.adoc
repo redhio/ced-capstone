@@ -1,8 +1,21 @@
 = ced-capstone
 Dec-2017
 This is our Certified Ethereum Developer CED Capstone Project for the Blockchainhub.
+
 This project is to show how an external remote service can be governed by blockchain smart contracts.  
 A series of service and state contracts govern the interactions, while a remote service bridge initiates the remote service and returns the results to the smart contract.
+
+The highlevel steps for our entire process are as follows;
+
+  1.  Receive data from a web3 interface
+
+  2.  Send data to a smart contract
+
+  3.  Contract captures data and runs BigML javascript file
+
+  4.  BigML model runs on BigML website (https://bigml.com/) and returns result to contract
+
+  5.  Contract processes payment and stores result for audit trail
 
 = Iris Prediction
 The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on three input parameters.  The details can be found https://bigml.com/api

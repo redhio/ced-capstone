@@ -45,7 +45,7 @@ This contract governs the transaction for a remote machine learning service.
 * The three entities which interact with the contract are the buyer, seller, and the external remote services.
 *  For a Utility model, we would like this to be like a Pre-Authorized-Debit (PAD), but for now you have to send eth.
 
-== Steps to complete "purchase" contract
+== Steps to complete "Purchase" contract
 
 Link to contract walkthrough;
 

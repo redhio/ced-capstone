@@ -1,10 +1,10 @@
-# ced-capstone
+= ced-capstone
 Dec-2017
 This is our Certified Ethereum Developer CED Capstone Project for the Blockchainhub.
 This project is to show how an external remote service can be governed by blockchain smart contracts.  
 A series of service and state contracts govern the interactions, while a remote service bridge initiates the remote service and returns the results to the smart contract.
 
-== Iris Prediction
+= Iris Prediction
 The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on three input parameters.  The details can be found https://bigml.com/api
 
 inputs: petal length, petal width, sepal length
@@ -17,16 +17,16 @@ https://en.wikipedia.org/wiki/Iris_setosa
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Blue_Flag%2C_Ottawa.jpg/330px-Blue_Flag%2C_Ottawa.jpg[title="ced-capstone-versicolor",width="200", height="200"]
 https://en.wikipedia.org/wiki/Iris_versicolor
 
-== Requirements
+= Requirements
 
 This Dapp requires Parity with signer enabled or Metamask.
 
-== Using the contracts
+= Using the contracts
 There are 2 contracts; contract "purchase" in file RemoteServicePurchase.sol and contract "MLPurchase" in file MLPurchaseTest.sol.  
 
-== RemoteServicePurchase.sol
+= RemoteServicePurchase.sol
 
-Summary
+== Summary
 
 Steps to complete "purchase" contract
 
@@ -35,9 +35,9 @@ Steps to complete "purchase" contract
 
 
 
-== MLPurchaseTest.sol
+= MLPurchaseTest.sol
 
-Summary
+== Summary
 
 MLPurchase is a contract used to receive a request from a customer to run data against an ML (machine learning) model.
 It receives the modelID, customerID, contractSLA, contractRate and seller address from a web3 interface to initiate the contract.
@@ -49,7 +49,7 @@ would be more complicated in practice.)
 
 If the verify ID and customer ID match, the MLPurchaseEnd function releases the funds.  If not, the contract reverts.
 
-Steps to complete "MLPurchase" contract
+== Steps to complete "MLPurchase" contract
 
 link to contract walkthrough;
 https://github.com/redhio/ced-capstone/blob/master/docs/MLPurchase%20readme%20documentation.pptx

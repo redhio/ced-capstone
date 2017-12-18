@@ -4,6 +4,7 @@ pragma solidity ^0.4.11;
 *  For a Utility model, we would like this to be like a Pre-Authorized-Debit (PAD), but for now you have to send eth.
 * Sunday V1.6.13final
 */
+
 contract Purchase {
     uint public value;
     /* These are roles for this contract.  This is a four (4) entity service agreement with a potential for 

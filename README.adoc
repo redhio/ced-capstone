@@ -1,7 +1,7 @@
 = ced-capstone
 Dec-2017
 This is our Certified Ethereum Developer CED Capstone Project for the Blockchainhub.
-This submission is on behalf team redhIO, consisting of github users: redhio-Don, egmeek and robynph.
+This submission is on behalf team "redhio" consisting of github users: redhio-don, egmeek and robynph.
 
 This project is to show how an external remote service can be governed by blockchain smart contracts.  
 A series of service and state contracts govern the interactions, while a remote service bridge initiates the remote service and returns the results to the smart contract.

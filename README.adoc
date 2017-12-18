@@ -43,9 +43,22 @@ There are 2 contracts; contract "purchase" in file RemoteServicePurchase.sol and
 
 Steps to complete "purchase" contract
 
+link to contract walkthrough;
+https://github.com/redhio/ced-capstone/blob/master/docs/RemoteServicePurchase%20readme%20documentation.pptx
 
+Details:
 
+1.  Publish RemoteServiceContract with contract rate and machine learning model ID.  This calls the constructor. Create and sign the request.  Wait for the contract to be mined, then retrieve the contract address.
 
+2. Execute the confirmPurchase and agree to the contract terms and price. Sign the transaction.  
+
+3. Can check the account on Etherscan to see the contract was deployed and the corresponding transaction information.
+
+4. Execute the Predict function and enter the ML Model parameters.  For this example enter the petal length, width, and sepal length.  Also send the amount of Wei specified by contractRate (2 Wei)
+
+5. Execute the confirmReceived function.  Confirm the purchase was received by signing two transactions.  The funds will be transferred and the state of the contract changed to 2. completed.
+
+6. Can check the account on Etherscan to see the contract was executed and the corresponding transaction information.
 
 
 = MLPurchaseTest.sol

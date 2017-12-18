@@ -17,7 +17,7 @@ The highlevel steps for our entire process are as follows;
 
   5.  Contract processes payment and stores result for audit trail
 
-= Iris Prediction
+= Iris Prediction using BigML
 The service that is used in this test is a simple well know exmaple machine learning model, which predicts the type of IRIS flower based on three input parameters.  The details can be found https://bigml.com/api
 
 inputs: petal length, petal width, sepal length

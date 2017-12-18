@@ -17,31 +17,49 @@ https://en.wikipedia.org/wiki/Iris_setosa
 image:https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Blue_Flag%2C_Ottawa.jpg/330px-Blue_Flag%2C_Ottawa.jpg[title="ced-capstone-versicolor",width="200", height="200"]
 https://en.wikipedia.org/wiki/Iris_versicolor
 
-== Setup
-node install remixd
-remixd -S .\contracts
-
-git commit -a
-git push origin master
-
-== Install
-The compiled files for the ced-capstone dapp.
-
-To install run:
-
-```
-./deploy.bat
-```
-
-Restart Parity and you'll see ced-capstone in the list of Dapps!
-
 == Requirements
 
 This Dapp requires Parity with signer enabled or Metamask.
 
 == Using the contracts
-1. Send 1 eth to 0x009
-2. Provide input data 2,4,5
-3. Confirm transaction
-4. Receive the answer, which is 2
+There are 2 contracts; contract "purchase" in file RemoteServicePurchase.sol and contract "MLPurchase" in file MLPurchaseTest.sol.  
+
+== RemoteServicePurchase.sol
+
+Summary
+
+Steps to complete "purchase" contract
+
+
+
+
+
+
+== MLPurchaseTest.sol
+
+Summary
+
+MLPurchase is a contract used to receive a request from a customer to run data against an ML (machine learning) model.
+It receives the modelID, customerID, contractSLA, contractRate and seller address from a web3 interface to initiate the contract.
+
+Upon deployment, the reportData function would provide details to a web3 interface which would send the request to an ML model (in this example we are using BigML).
+The ML model would process the request and respond back to the MLPurchaseEnd function with an accuracy value, verification ID and contract value.  The reported accuracy is tested against the contractSLA and 
+the verification ID is tested against the customer ID to ensure this result is matched to the correct contact (using custID in this example for simplicity, the verifyID
+would be more complicated in practice.)
+
+If the verify ID and customer ID match, the MLPurchaseEnd function releases the funds.  If not, the contract reverts.
+
+Steps to complete "MLPurchase" contract
+
+link to contract walkthrough;
+https://github.com/redhio/ced-capstone/blob/master/docs/MLPurchase%20readme%20documentation.pptx
+
+Details:
+1.  Enter contractRate (in wei), contract SLA, customer ID, model ID and seller address into Remix console.
+2.  Create contract and send using MetaMask – active account is considered the customer or “buyer”.  Contract is deployed.
+3.  Can check the account on Etherscan to see the contract was deployed and the corresponding transaction information.
+4.  Can use the report function to see the data posted to the contract.  This information would also be sent to the ML model     using a web3 interface.
+5.  Can see seller address was captured but the verifyID and MlAcc values have not been passed yet.
+6.  Complete the purchase by populating the MLPurchaseEnd prompt with the verifyID and MLAcc values.  For this example           verifyID is custID.  Also, the amount of wei sent should match the ContractRate.  Validation ensure the correct amount is     entered into contract.
+7.  Purchase is complete.  Can see the value was sent to the seller’s account on Etherscan and the MLAcc and VerifyID have       been stored in the contract.
 

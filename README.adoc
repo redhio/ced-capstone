@@ -55,11 +55,19 @@ link to contract walkthrough;
 https://github.com/redhio/ced-capstone/blob/master/docs/MLPurchase%20readme%20documentation.pptx
 
 Details:
+
 1.  Enter contractRate (in wei), contract SLA, customer ID, model ID and seller address into Remix console.
+
 2.  Create contract and send using MetaMask – active account is considered the customer or “buyer”.  Contract is deployed.
+
 3.  Can check the account on Etherscan to see the contract was deployed and the corresponding transaction information.
-4.  Can use the report function to see the data posted to the contract.  This information would also be sent to the ML model     using a web3 interface.
+
+4.  Can use the report function to see the data posted to the contract.  This information would also be sent to the ML model 
+using a web3 interface.
+
 5.  Can see seller address was captured but the verifyID and MlAcc values have not been passed yet.
+
 6.  Complete the purchase by populating the MLPurchaseEnd prompt with the verifyID and MLAcc values.  For this example           verifyID is custID.  Also, the amount of wei sent should match the ContractRate.  Validation ensure the correct amount is     entered into contract.
+
 7.  Purchase is complete.  Can see the value was sent to the seller’s account on Etherscan and the MLAcc and VerifyID have       been stored in the contract.
 
